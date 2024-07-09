@@ -6,8 +6,11 @@
 ###########################################################
 # Amended by: KalipayJ
 # #####################
-# /phoenix/imaging_helper/installer_vm.py
-# Relaunch from /root/ with: ./ce_installer && screen -r
+# 1. Once the installer GUI has popped up, press CTRL + C to exit the installer.
+# 2. Type in the following command (optional - but easier for step 3): service sshd start
+# 3. Replace the following file with the contents of this file /phoenix/imaging_helper/installer_vm.py
+# 4. Relaunch the installer (from server screen) in /root/ with: ./ce_installer && screen -r
+# 5. (Optional) Follow the installer progress in SSH terminal with: tail -f /tmp/installer_vm.log
 ###########################################################
 # This module installs a hypervisor in a VM
 # backed by a SATADOM.
@@ -110,7 +113,7 @@ class InstallerVM(object):
     # the amount of host memory
     # _, meminfo = sysUtil.get_proc_info()
     # host_ram = sysUtil.parse_memory(meminfo)
-    vm_ram = "64G"
+    vm_ram = "32G"
     log.INFO("Installer VM memory = %s" % vm_ram)
 
     self.dev = dev or self._find_block_device()
